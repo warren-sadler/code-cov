@@ -10,8 +10,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install dependencies
-        run: pnpm install
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: true
       - name: Run tests and collect coverage
         run: pnpm nx run-many --all -t test "--codeCoverage"
       - name: Upload coverage to Codecov
