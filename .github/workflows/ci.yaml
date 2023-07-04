@@ -20,3 +20,5 @@ jobs:
         run: pnpm nx run-many --all -t test "--codeCoverage"
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
